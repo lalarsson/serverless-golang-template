@@ -1,0 +1,45 @@
+settings:
+    legacy:
+        force: false
+        interval: 0ms
+server:
+  status: false
+  open: false
+  port: 5002
+  host: localhost
+schema:
+- name: github.com/dreamly/api
+  path: /Users/larsson/go/src/github.com/dreamly/api
+  commands:
+
+    clean:
+      status: true
+    vet:
+      status: true
+      method: go vet ./...
+    test:
+      status: true
+      method: go test ./...
+    install:
+      status: true
+      method: dep ensure
+    build:
+      status: true
+      method: bash scripts/race.sh
+  watcher:
+    extensions:
+    - go
+    paths:
+    - /src
+    ignored_paths:
+    - ./.git
+    - ./.realize
+    - ./vendor
+    - ./node_modules
+    - ./bin
+    - ./.serverless
+streams:
+    cli_out: true
+    file_out: false
+    file_log: false
+    file_err: false

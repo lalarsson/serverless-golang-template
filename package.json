@@ -1,0 +1,36 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "generatedocs": "./node_modules/.bin/serverless openapi generate -o ../docs/swagger.json -f json -i 4",
+    "deploy": "bash scripts/deploy.sh production",
+    "test:function": "./node_modules/.bin/serverless invoke --stage local --function api",
+    "test:runlocal": "./node_modules/.bin/serverless deploy --stage local",
+    "predevelop:server": "bash scripts/build.sh",
+    "develop:server": "./node_modules/.bin/sls simulate apigateway -p 5000",
+    "develop:watch": "./node_modules/.bin/nodemon --exec 'npm run develop:server' -e 'go yml json'",
+    "develop": "./node_modules/.bin/concurrently --kill-others \"npm run develop:watch\" \"npm run test:watch\"",
+    "test": "go test ./src/...",
+    "test:lint": "golint ./src/...",
+    "test:race": "bash scripts/race.sh",
+    "test:blueprint": "./node_modules/.bin/sls validate",
+    "test:watch": "./node_modules/.bin/nodemon --exec 'npm run test && npm run test:lint && npm run test:blueprint' -e 'go'"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^1.18.3",
+    "serverless": "^1.29.2",
+    "serverless-apigateway-plugin": "0.0.6",
+    "serverless-domain-manager": "^2.6.0",
+    "serverless-kubeless": "^0.4.4"
+  },
+  "devDependencies": {
+    "concurrently": "^3.6.1",
+    "serverless-apib-validator": "^1.2.0",
+    "serverless-localstack": "^0.2.3",
+    "serverless-openapi-documentation": "^0.4.0",
+    "serverless-plugin-simulate": "0.0.17"
+  }
+}

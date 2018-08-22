@@ -1,0 +1,67 @@
+service: template
+
+provider:
+    name: aws
+    stage: ${opt:stage}
+    profile: ${opt:stage}
+    runtime: go1.x
+package:
+    include:
+        - ./bin/**
+    exclude:
+        - ./**
+
+functions:
+    hello:
+        handler: bin/hello/main
+        events:
+            - http:
+                path: hello
+                method: get
+                cors: true
+                documentation: ${file(serverless.doc.yml):endpoints.hello}
+        # warmup: true
+    world:
+        handler: bin/world/main
+        events:
+            - http:
+                path: world
+                method: get
+        # warmup: true
+plugins:
+    - serverless-plugin-simulate
+    - serverless-openapi-documentation
+    - serverless-apib-validator
+    # - serverless-domain-manager
+    # - serverless-plugin-warmup
+custom:
+    apibValidator:
+        blueprintFile: './docs/blueprints/api.apib' # Defaults to apiary.apib
+        basePath: '/'
+    documentation: ${file(serverless.doc.yml):documentation}
+    simulate:
+        dist: dist
+        services:
+            file: docker-compose.yml
+    customDomain:
+        domainName: api.dreamly.se
+        basePath: ''
+        stage: ${self:provider.stage}
+        createRoute53Record: true
+    localstack:
+        host: http://localhost
+        debug: true
+        stages:
+            - local
+            - dev
+    endpoints:
+        APIGateway: http://localhost:4567
+        S3: http://localhost:4572
+        DynamoDB: http://localhost:4570
+        CloudFormation: http://localhost:4581
+        Elasticsearch: http://localhost:4571
+        ES: http://localhost:4578
+        SNS: http://localhost:4575
+        SQS: http://localhost:4576
+        Lambda: http://localhost:4574
+        Kinesis: http://localhost:4568
