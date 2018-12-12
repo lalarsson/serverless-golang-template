@@ -1,0 +1,22 @@
+service: template
+
+provider:
+    name: aws
+    stage: ${opt:stage}
+    profile: ${opt:stage}
+    runtime: go1.x
+package:
+    include:
+        - ./bin/**
+    exclude:
+        - ./**
+
+functions:
+    slack:
+        handler: bin/slack/main
+        events:
+        - sns: arn:XXX # SNS topic
+        environment:
+            SLACK_TOKEN: TOKEN #slack api token https://api.slack.com/custom-integrations/legacy-tokens
+            SLACK_CHANNEL_ID: ID #alerts https://api.slack.com/methods/channels.list/test
+            SLACK_USER_NAME: Alert-kun

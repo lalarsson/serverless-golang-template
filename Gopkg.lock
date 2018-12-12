@@ -34,12 +34,39 @@
   revision = "1eb29530716f262bad5b83eb9a5b3f7483636949"
 
 [[projects]]
+  digest = "1:7b5c6e2eeaa9ae5907c391a91c132abfd5c9e8a784a341b5625e750c67e6825d"
+  name = "github.com/gorilla/websocket"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "66b9c49e59c6c48f0ffce28c2d8b8a5678502c6d"
+  version = "v1.4.0"
+
+[[projects]]
   digest = "1:3b60e83c47b2a537921cea9e4d2625a2e88c8b025875676ab9906db903254b92"
   name = "github.com/kubeless/kubeless"
   packages = ["pkg/functions"]
   pruneopts = "UT"
   revision = "3bec4b65f29d830bd6709abb07e00f11fe54d646"
   version = "v0.6.0"
+
+[[projects]]
+  digest = "1:95d38d218bf2290987c6b0e885a9f0f2d3d3239235acaddca01c3fe36e5e5566"
+  name = "github.com/nlopes/slack"
+  packages = [
+    ".",
+    "slackutilsx",
+  ]
+  pruneopts = "UT"
+  revision = "b9033a72a20bf84563485e86a2adbea4bf265804"
+  version = "v0.4.0"
+
+[[projects]]
+  digest = "1:40e195917a951a8bf867cd05de2a46aaf1806c50cf92eebf4c16f78cd196f747"
+  name = "github.com/pkg/errors"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "645ef00459ed84a119197bfb8d8205042c6df63d"
+  version = "v0.8.0"
 
 [[projects]]
   digest = "1:0028cb19b2e4c3112225cd871870f2d9cf49b9b4276531f03438a88e94be86fe"
@@ -72,6 +99,7 @@
     "github.com/aws/aws-lambda-go/lambda",
     "github.com/fnproject/fdk-go",
     "github.com/kubeless/kubeless/pkg/functions",
+    "github.com/nlopes/slack",
     "github.com/stretchr/testify/assert",
   ]
   solver-name = "gps-cdcl"
