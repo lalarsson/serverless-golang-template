@@ -20,3 +20,9 @@ functions:
             SLACK_TOKEN: TOKEN #slack api token https://api.slack.com/custom-integrations/legacy-tokens
             SLACK_CHANNEL_ID: ID #alerts https://api.slack.com/methods/channels.list/test
             SLACK_USER_NAME: Alert-kun
+abnormality:
+        handler: bin/slack/abnormality
+        events:
+          - schedule: rate(5 minutes)
+        environment:
+            SNS_ARN: arn:XXXX # SNS topic to publish alarms to

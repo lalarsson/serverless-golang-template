@@ -15,23 +15,62 @@
   version = "v1.2.0"
 
 [[projects]]
+  digest = "1:3a59e07699ad8d616cd8a11a72426cbac03e021ae6a98da7542f7fbcfe6ed7e7"
+  name = "github.com/aws/aws-sdk-go"
+  packages = [
+    "aws",
+    "aws/awserr",
+    "aws/awsutil",
+    "aws/client",
+    "aws/client/metadata",
+    "aws/corehandlers",
+    "aws/credentials",
+    "aws/credentials/ec2rolecreds",
+    "aws/credentials/endpointcreds",
+    "aws/credentials/processcreds",
+    "aws/credentials/stscreds",
+    "aws/crr",
+    "aws/csm",
+    "aws/defaults",
+    "aws/ec2metadata",
+    "aws/endpoints",
+    "aws/request",
+    "aws/session",
+    "aws/signer/v4",
+    "internal/ini",
+    "internal/s3err",
+    "internal/sdkio",
+    "internal/sdkrand",
+    "internal/sdkuri",
+    "internal/shareddefaults",
+    "private/protocol",
+    "private/protocol/eventstream",
+    "private/protocol/eventstream/eventstreamapi",
+    "private/protocol/json/jsonutil",
+    "private/protocol/jsonrpc",
+    "private/protocol/query",
+    "private/protocol/query/queryutil",
+    "private/protocol/rest",
+    "private/protocol/restxml",
+    "private/protocol/xml/xmlutil",
+    "service/dynamodb",
+    "service/dynamodb/dynamodbattribute",
+    "service/dynamodb/expression",
+    "service/s3",
+    "service/sns",
+    "service/sts",
+  ]
+  pruneopts = "UT"
+  revision = "818fa5c274d4dee665096411e2bad037f47c31f7"
+  version = "v1.16.3"
+
+[[projects]]
   digest = "1:a2c1d0e43bd3baaa071d1b9ed72c27d78169b2b269f71c105ac4ba34b1be4a39"
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
   pruneopts = "UT"
   revision = "346938d642f2ec3594ed81d874461961cd0faa76"
   version = "v1.1.0"
-
-[[projects]]
-  branch = "master"
-  digest = "1:dbc01e5067993535c923a2089b4949255993223ce004790aa134b64aef0f79a2"
-  name = "github.com/fnproject/fdk-go"
-  packages = [
-    ".",
-    "utils",
-  ]
-  pruneopts = "UT"
-  revision = "1eb29530716f262bad5b83eb9a5b3f7483636949"
 
 [[projects]]
   digest = "1:7b5c6e2eeaa9ae5907c391a91c132abfd5c9e8a784a341b5625e750c67e6825d"
@@ -42,12 +81,11 @@
   version = "v1.4.0"
 
 [[projects]]
-  digest = "1:3b60e83c47b2a537921cea9e4d2625a2e88c8b025875676ab9906db903254b92"
-  name = "github.com/kubeless/kubeless"
-  packages = ["pkg/functions"]
+  digest = "1:bb81097a5b62634f3e9fec1014657855610c82d19b9a40c17612e32651e35dca"
+  name = "github.com/jmespath/go-jmespath"
+  packages = ["."]
   pruneopts = "UT"
-  revision = "3bec4b65f29d830bd6709abb07e00f11fe54d646"
-  version = "v0.6.0"
+  revision = "c2b33e84"
 
 [[projects]]
   digest = "1:95d38d218bf2290987c6b0e885a9f0f2d3d3239235acaddca01c3fe36e5e5566"
@@ -84,21 +122,19 @@
   revision = "f35b8ab0b5a2cef36673838d662e249dd9c94686"
   version = "v1.2.2"
 
-[[projects]]
-  digest = "1:6ad2104db8f34b8656382ef0a7297b9a5cc42e7bdce95d968e02b92fc97470d1"
-  name = "golang.org/x/net"
-  packages = ["context"]
-  pruneopts = "UT"
-  revision = "1c05540f6879653db88113bc4a2b70aec4bd491f"
-
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
     "github.com/aws/aws-lambda-go/events",
     "github.com/aws/aws-lambda-go/lambda",
-    "github.com/fnproject/fdk-go",
-    "github.com/kubeless/kubeless/pkg/functions",
+    "github.com/aws/aws-sdk-go/aws",
+    "github.com/aws/aws-sdk-go/aws/session",
+    "github.com/aws/aws-sdk-go/service/dynamodb",
+    "github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute",
+    "github.com/aws/aws-sdk-go/service/dynamodb/expression",
+    "github.com/aws/aws-sdk-go/service/s3",
+    "github.com/aws/aws-sdk-go/service/sns",
     "github.com/nlopes/slack",
     "github.com/stretchr/testify/assert",
   ]
